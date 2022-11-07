@@ -13,9 +13,41 @@ function Demo(props) {
             name={task.name}
             completed={task.completed}
             key={task.id}
+            toggleTaskCompleted={toggleTaskCompleted}
+            deleteTask={deleteTask}
+            editTask={editTask}
         />
     ));
+    const headingText = `${taskList.length} tasks remaining`;
 
+    
+    function editTask(id, newName) {
+        const editTaskList = tasks.map((task) => {
+            if (id === task.id) {
+                return {...task, name: newName};
+            }
+            return task;
+        });
+        setTasks(editTaskList)
+    }
+
+    function deleteTask(id) {
+        const remainingTasks = tasks.filter((task) => id !== task.id);
+        setTasks(remainingTasks)
+    }
+
+    function toggleTaskCompleted(id) {
+        const updateTasks = tasks.map((task) => {
+            if (id === task.id) {
+                return {...task, completed: !task.completed};
+            }
+            return task;
+        });
+
+        setTasks(updateTasks)
+    }
+
+    
     function addTask(name) {
         const newTask = { id: `todo-${nanoid()}`, name, completed: false}
         setTasks([...tasks, newTask])
@@ -30,7 +62,7 @@ function Demo(props) {
                 <FilterButton name='active' />
                 <FilterButton name='completed' />
             </div>
-            <h2 id="list-heading">3 tasks remaining</h2>
+            <h2 id="list-heading">{headingText}</h2>
             <ul
                 role="list"
                 className="todo-list stack-large stack-exception"
