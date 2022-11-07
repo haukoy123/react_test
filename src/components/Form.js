@@ -5,7 +5,8 @@ function Form(props) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        props.addTask('hello hau');
+        props.addTask(name);
+        setName('')
     }
 
     function handleChange(e) {
