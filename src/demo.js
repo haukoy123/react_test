@@ -1,10 +1,13 @@
+import React, { useState } from "react";
 import "./demo.css";
 import FilterButton from "./components/FilterButton";
 import Todo from "./components/Todo";
 import Form from "./components/Form";
+import { nanoid } from "nanoid";
 
 function Demo(props) {
-    const taskList = props.tasks?.map((task) => (
+    const [tasks, setTasks] = useState(props.tasks);
+    const taskList = tasks.map((task) => (
         <Todo
             id={task.id}
             name={task.name}
@@ -12,7 +15,12 @@ function Demo(props) {
             key={task.id}
         />
     ));
-    // console.log(taskList);
+
+    function addTask(name) {
+        const newTask = { id: `todo-${nanoid()}`, name, completed: false}
+        setTasks([...tasks, newTask])
+    }
+
     return (
         <div className="todoapp stack-large">
             <h1>TodoMatic</h1>
@@ -32,10 +40,6 @@ function Demo(props) {
             </ul>
         </div>
     );
-
-    function addTask(name) {
-        alert(name);
-    }
 }
 
 export default Demo;
