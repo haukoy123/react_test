@@ -24,7 +24,6 @@ function Demo(props) {
             setFilter={setFilter}
         />
     ));
-    console.log(tasks.filter(FILTER_MAP[filter]))
     const taskList = tasks.filter(FILTER_MAP[filter]).map((task) => (
         <Todo
             id={task.id}
