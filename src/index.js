@@ -18,7 +18,7 @@ const root = ReactDOM.createRoot(document.getElementById('test'));
 // );
 
 // root.render(<Demo tasks={DATA}/>);
-root.render(<App />);
+root.render(<App a={1}/>);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
