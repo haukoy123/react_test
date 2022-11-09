@@ -8,6 +8,16 @@ function Test() {
         <div>
             <div>examp: {value.name}</div>
             <div>study time: {value.age} day</div>
+            <User.Consumer>
+                {value => {
+                    return (
+                        <div>
+                            <div>user name: {value.name}</div>
+                            <div>age: {value.age}</div>
+                        </div>
+                    )
+                }}
+            </User.Consumer>
         </div>
     );
   }

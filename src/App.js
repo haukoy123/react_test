@@ -16,7 +16,7 @@ function App(props) {
     // effect
     useEffect(() => {
         // khi props.a hoac fullName.name thay doi chay vao day
-        console.log('hello');
+        console.log('use effect');
     }, [fullName.name, props.a]);
 
     function handleClick() {
