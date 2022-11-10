@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import Test from "./components/Test";
 import User from "./UseContext"; 
 
@@ -12,6 +12,13 @@ function App(props) {
     const startTime = new Date('11/8/2022');
     const studyTime = Math.floor(Math.abs(new Date() - startTime)/86400000);
     const [user, setUser] = useState({name: 'test context', age: studyTime})
+
+    // userRef
+    const inputId = '123'
+    const textInput = useRef('');
+    function focusTextInput() {
+        textInput.current.focus();
+    }
 
     // effect
     useEffect(() => {
@@ -50,6 +57,11 @@ function App(props) {
                     )
                 }}
             </User.Consumer>
+            <p>
+            <label>username:</label>
+            <input type="text" id={inputId} ref={textInput} defaultValue='gi do' />
+            </p>
+            <button onClick={focusTextInput}>Focus the text input</button>
         </div>
     );
 };

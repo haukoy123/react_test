@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import Demo from './demo';
+import TestAuth from './TestAuth';
 
 const DATA = [
   { id: "todo-0", name: "Eat", completed: true },
@@ -18,7 +19,8 @@ const root = ReactDOM.createRoot(document.getElementById('test'));
 // );
 
 // root.render(<Demo tasks={DATA}/>);
-root.render(<App a={1}/>);
+// root.render(<App a={1}/>);
+root.render(<TestAuth />);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
