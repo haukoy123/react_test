@@ -1,14 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import {
+    createBrowserRouter,
+    RouterProvider,
+} from "react-router-dom";
+
 import './index.css';
 import App from './App';
 import Demo from './demo';
 import TestAuth from './TestAuth';
+import ErrorPage from "./error-page";
+
 
 const DATA = [
-  { id: "todo-0", name: "Eat", completed: true },
-  { id: "todo-1", name: "Sleep", completed: false },
-  { id: "todo-2", name: "Repeat", completed: false }
+    { id: "todo-0", name: "Eat", completed: true },
+    { id: "todo-1", name: "Sleep", completed: false },
+    { id: "todo-2", name: "Repeat", completed: false }
 ];
 
 const root = ReactDOM.createRoot(document.getElementById('test'));
@@ -20,7 +27,27 @@ const root = ReactDOM.createRoot(document.getElementById('test'));
 
 // root.render(<Demo tasks={DATA}/>);
 // root.render(<App a={1}/>);
-root.render(<TestAuth />);
+// root.render(<TestAuth />);
+
+const router = createBrowserRouter([
+    {
+        path: "/",
+        element: <Demo tasks={DATA} />,
+        errorElement: <ErrorPage />,
+        children: [
+            {
+                path: "/test",
+                element: <TestAuth />,
+            },
+        ],
+    },
+    {
+        path: "/app",
+        element: <App a={1} />,
+    },
+]);
+
+root.render( <RouterProvider router={router} />)
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

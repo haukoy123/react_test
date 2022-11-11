@@ -34,7 +34,7 @@ function App(props) {
         setUser({...user, name: 'update context'})
     }
     return (
-        <div>
+        <div className="mw-68rem m-auto">
             <h1>state: {a}</h1>
             <h1>props: {props.a}</h1>
             <h1>Title: {title}</h1>

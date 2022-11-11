@@ -4,6 +4,8 @@ import FilterButton from "./components/FilterButton";
 import Todo from "./components/Todo";
 import Form from "./components/Form";
 import { nanoid } from "nanoid";
+import { Outlet } from "react-router-dom";
+
 
 const FILTER_MAP = {
     All: () => true,
@@ -69,21 +71,27 @@ function Demo(props) {
     }
     // eslint-disable-next-line
     return (
-        <div className="todoapp stack-large">
-            <h1>TodoMatic</h1>
-            <Form addTask={addTask} />
-            <div className="filters btn-group stack-exception">
-                {filterList}
+        <div style={{display: "flex"}}>
+            <div className="todoapp stack-large mw-68rem">
+                <h1>TodoMatic</h1>
+                <Form addTask={addTask} />
+                <div className="filters btn-group stack-exception">
+                    {filterList}
+                </div>
+                <h2 id="list-heading">{headingText}</h2>
+                <ul
+                    role="list"
+                    className="todo-list stack-large stack-exception"
+                    aria-labelledby="list-heading"
+                >
+                    {taskList}
+                </ul>
             </div>
-            <h2 id="list-heading">{headingText}</h2>
-            <ul
-                role="list"
-                className="todo-list stack-large stack-exception"
-                aria-labelledby="list-heading"
-            >
-                {taskList}
-            </ul>
+            <div className="m-auto">
+                <Outlet />
+            </div>
         </div>
+        
     );
 }
 

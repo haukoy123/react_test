@@ -55,12 +55,29 @@ input[type="text"] {
 }
 body {
   width: 100%;
-  max-width: 68rem;
+  /* max-width: 68rem; */
   margin: 0 auto;
   font: 1.6rem/1.25 Arial, sans-serif;
   background-color: #f5f5f5;
   color: #4d4d4d;
 }
+
+.float-right {
+  float: right;
+}
+
+.m-auto {
+  margin: auto;
+}
+
+.mw-68rem {
+  max-width: 68rem;
+}
+
+.w-50 {
+  width: 50%;
+}
+
 @media screen and (min-width: 620px) {
   body {
     font-size: 1.9rem;
