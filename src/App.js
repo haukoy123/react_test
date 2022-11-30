@@ -13,10 +13,19 @@ function App(props) {
     const studyTime = Math.floor(Math.abs(new Date() - startTime)/86400000);
     const [user, setUser] = useState({name: 'test context', age: studyTime})
 
-    // userRef
-    const inputId = '123'
+    // useRef
+    const sentMessage = useRef(0);
+
     const textInput = useRef('');
     function focusTextInput() {
+        if(sentMessage.current === 3){
+            return alert("Message Limit Reached")
+        }
+        console.log('use Ref');
+        sentMessage.current += 1;
+        console.log('mess', sentMessage);
+        console.log('input elm', textInput);
+        console.log(textInput.current.value);
         textInput.current.focus();
     }
 
@@ -59,9 +68,9 @@ function App(props) {
             </User.Consumer>
             <p>
             <label>username:</label>
-            <input type="text" id={inputId} ref={textInput} defaultValue='gi do' />
+            <input type="text" ref={textInput} defaultValue='gi do' />
             </p>
-            <button onClick={focusTextInput}>Focus the text input</button>
+            <button onClick={focusTextInput} ref={(element) => console.log(element)}>Focus the text input</button>
         </div>
     );
 };
