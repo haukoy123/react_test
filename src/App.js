@@ -18,6 +18,8 @@ function App(props) {
 
     const textInput = useRef('');
     function focusTextInput() {
+        // useRef thay doi k re-render component
+        // bien dung useRef khong bi thay doi khi re-render component
         if(sentMessage.current === 3){
             return alert("Message Limit Reached")
         }
@@ -25,6 +27,7 @@ function App(props) {
         sentMessage.current += 1;
         console.log('mess', sentMessage);
         console.log('input elm', textInput);
+        // bien su dung useRef truyen vao ref de xac dinh eml
         console.log(textInput.current.value);
         textInput.current.focus();
     }
