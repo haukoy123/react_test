@@ -3,7 +3,11 @@ import ReactDOM from 'react-dom/client';
 import {
     createBrowserRouter,
     RouterProvider,
+    BrowserRouter,
+    Routes,
+    Route
 } from "react-router-dom";
+
 
 import './index.css';
 import App from './App';
@@ -33,7 +37,7 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: <Demo tasks={DATA} />,
-        errorElement: <ErrorPage />,
+        errorElement: <ErrorPage />, // errorElement chi hoat dong trong createBrowserRouter
         children: [
             {
                 path: "/test",
@@ -47,7 +51,20 @@ const router = createBrowserRouter([
     },
 ]);
 
-root.render( <RouterProvider router={router} />)
+// root.render( <RouterProvider router={router} />)
+
+root.render(
+    <BrowserRouter>
+        <Routes>
+            <Route path="/todo" element={<Demo tasks={DATA} />} >
+                <Route path="testOutlet" element={<TestAuth />} />
+            </Route>
+            <Route path="test" element={<App a={1} />} />
+            <Route path="*" element={<ErrorPage />} />
+            <Route path="auth" element={<TestAuth />} />
+        </Routes>
+    </BrowserRouter>
+)
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

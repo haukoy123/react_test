@@ -2,7 +2,9 @@ import React from "react";
 import { useRouteError } from "react-router-dom";
 
 export default function ErrorPage() {
-  const error = useRouteError();
+
+  // const error = useRouteError();
+  const error = {statusText: 'k tim thay'};
   console.error(error);
 
   return (

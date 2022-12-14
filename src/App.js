@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext, useRef } from "react";
+import { Link } from "react-router-dom";
 import Test from "./components/Test";
 import User from "./UseContext"; 
 
@@ -51,7 +52,7 @@ function App(props) {
             <h1>props: {props.a}</h1>
             <h1>Title: {title}</h1>
             <h3>Name: {fullName.name}</h3>
-            <h3 onClick={() => handleClick()}>Family Name: {fullName.familyName}</h3>
+            <h3 style={{border: '1px solid black'}} onClick={() => handleClick()}>Family Name: {fullName.familyName}</h3>
             <User.Provider value={user}>
                 <div>
                     <Test />
@@ -74,6 +75,8 @@ function App(props) {
             <input type="text" ref={textInput} defaultValue='gi do' />
             </p>
             <button onClick={focusTextInput} ref={(element) => console.log(element)}>Focus the text input</button>
+            <p><Link to="/todo">TodoTask</Link></p>
+            <p><Link to="/todo/testOutlet">test Outlet</Link></p>
         </div>
     );
 };
