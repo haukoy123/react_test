@@ -14,6 +14,7 @@ import App from './App';
 import Demo from './demo';
 import TestAuth from './TestAuth';
 import ErrorPage from "./error-page";
+import Root from './Root';
 
 
 const DATA = [
@@ -56,12 +57,13 @@ const router = createBrowserRouter([
 root.render(
     <BrowserRouter>
         <Routes>
-            <Route path="/todo" element={<Demo tasks={DATA} />} >
+            <Route path="todo" element={<Demo tasks={DATA} />} >
                 <Route path="testOutlet" element={<TestAuth />} />
             </Route>
             <Route path="test" element={<App a={1} />} />
-            <Route path="*" element={<ErrorPage />} />
+            <Route path="contracts" element={<Root />} />
             <Route path="auth" element={<TestAuth />} />
+            <Route path="*" element={<ErrorPage />} />
         </Routes>
     </BrowserRouter>
 )
